@@ -15,7 +15,7 @@ export const App = () => {
   const [page, setPage] = useState(1);
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [perPage, setPerPage] = useState(12);
+  const [perPage] = useState(12);
 
   useEffect(() => {
     if (searchQuery === '') {
@@ -30,7 +30,7 @@ export const App = () => {
     }
 
     fetchPhotos();
-  }, [searchQuery]);
+  }, [page, perPage, searchQuery]);
 
   useEffect(() => {
     if (searchQuery === '' || page === 1) {
@@ -44,7 +44,7 @@ export const App = () => {
     }
 
     fetchMorePhotos();
-  }, [page]);
+  }, [page, perPage, searchQuery]);
 
   const isContentLeft = () => {
     return totalImages > page * perPage;
