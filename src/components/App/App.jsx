@@ -30,7 +30,8 @@ export const App = () => {
     }
 
     fetchPhotos();
-  }, [page, perPage, searchQuery]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
 
   useEffect(() => {
     if (searchQuery === '' || page === 1) {
@@ -44,7 +45,8 @@ export const App = () => {
     }
 
     fetchMorePhotos();
-  }, [page, perPage, searchQuery]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   const isContentLeft = () => {
     return totalImages > page * perPage;
